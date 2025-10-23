@@ -18,9 +18,8 @@ class Rectangle {
     @Override
     public String toString(){
         double area = width*height;
-        String ret = "넓이: " + Double.toString(area);
 
-        return ret;
+        return ""+ area;
     }
 
     // 넓이 계산
@@ -41,6 +40,11 @@ class Main {
         Rectangle r = new Rectangle(5, 10);
         //System.out.println("넓이: " + r.area());
         System.out.println(r);
+
+        Rectangle rr = new Rectangle();
+        rr.setHeight(5);
+        rr.setWidth(10);
+        System.out.println(rr);
 
         return;
     }

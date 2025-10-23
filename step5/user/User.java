@@ -1,8 +1,8 @@
-package step5.user;
+package user;
 
 public class User {
-    protected String name;
-    protected String password;
+    private String name;
+    private String password;
 
     public User(String name, String password) {
         this.name = name;
@@ -10,10 +10,10 @@ public class User {
     }
 
     // getter
-    public String getName() { return name; }
+    protected String getName() { return name; }
 
     // setter
-    public void setPassword(String pw) {
+    protected void setPassword(String pw) {
         if (pw == null || pw.length() < 8) {
             throw new IllegalArgumentException("비밀번호는 8자 이상이어야 합니다.");
         }

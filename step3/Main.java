@@ -1,6 +1,6 @@
 package step3;
 
-import javax.smartcardio.Card;
+//import javax.smartcardio.Card;
 
 interface Payment{
     public void pay(int amount);
@@ -28,6 +28,18 @@ class PaypalPayment implements Payment{
     @Override
     public void refund(int amount){
         System.out.println("PayPal 결제 환불: "+ amount + "원");
+    }
+}
+
+class CashPayment implements Payment{
+    @Override
+    public void pay(int amount){
+        System.out.println("현금결제" + amount + "원");
+    }
+
+    @Override
+    public void refund(int amount){
+        System.out.println("현금 결제 환불: "+ amount + "원");
     }
 }
 
@@ -59,6 +71,9 @@ public class Main {
         st.changeStrategy(new PaypalPayment());
         st.pay(20000);
         st.refund(2500);
+        st.changeStrategy(new CashPayment());
+        st.pay((10000));
+        st.refund(7000);
 
         return;
     }
