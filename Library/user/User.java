@@ -1,4 +1,4 @@
-package Library.user;
+package Library.User;
 
 class User {
     protected String Name;
