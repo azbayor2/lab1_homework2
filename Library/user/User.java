@@ -1,6 +1,6 @@
 package Library.User;
 
-class User {
+public class User {
     protected String Name;
     protected String Birthdate;
     protected String Gender;
