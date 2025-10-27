@@ -3,14 +3,23 @@ package Library.Member;
 import Library.User.*;
 
 public class Member{
-    private int id;
-    private int username;
+    private String username;
     private User user;
 
-    Member(User user, int id, int username){
+    Member(User user, String username){
         this.user = user;
-        this.id = id;
         this.username = username;
+    }
+
+    void editUser(User o){
+        user = o;
+        return;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(this.user.equals(o)) return true;
+        return false;
     }
 }
 
