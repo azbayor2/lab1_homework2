@@ -1,44 +1,43 @@
 package Library.Book;
+import Library.Exception.FewerBookException;
+import Library.Exception.NoLibraryBookException;
 import java.util.*;
 
 
 interface BookManagementInterface{
-    public void AddBook(Book book, BookCategory cat, int count) throws Exception;
-    public void DeleteBook(Integer BookNumber, Integer Count) throws Exception;
+    public void AddBook(LibraryBook book, int count);
+    public void DeleteBook(LibraryBook book, Integer Count);
 }
 
 public class BookManagement implements BookManagementInterface{  //예외처리 하기 (책 개수 <=0 일 때)
     private int BookCount = 0;
-    private HashMap<Integer, Integer> BookStocks = new HashMap<>();
-    private HashMap<LibraryBook, Integer> BookNum = new HashMap<>();
+    private HashMap<LibraryBook, Integer> BookStocks = new HashMap<>();
+    //private HashMap<LibraryBook, Integer> BookNum = new HashMap<>();
 
-    public void AddBook(Book book, BookCategory cat, int count){
-        int booknum;
-        if(BookNum.containsKey(book))
-            booknum = BookNum.get(book);
-        else{
-            BookNum.put(new LibraryBook(book, BookCount, cat), BookCount);
-            booknum = BookCount;
-            BookCount++;
+    public void AddBook(LibraryBook book, int count){
+        if(!BookStocks.containsKey(book)){
+            BookStocks.put(book, count);
+            return;
         }
 
-        int prevcount = 0;
-        if(BookStocks.containsKey(booknum))
-            prevcount = BookStocks.get(booknum);
-
-        BookStocks.put(booknum, prevcount+count);
+        int prevCount = BookStocks.get(book);
+        BookStocks.put(book, prevCount+count);
     }
 
-    public void DeleteBook(Integer BookNumber, Integer Count) throws Exception{  //예외처리 하기 (책 개수 0이하 일때, 버리는 책이 더 많을 때)
-        if(!BookStocks.containsKey(BookNumber))
-            throw new Exception();
+    public void DeleteBook(LibraryBook book, Integer Count){  //예외처리 하기 (책 개수 0이하 일때, 버리는 책이 더 많을 때)
+        try{
+            if(!BookStocks.containsKey(book))
+                throw new NoLibraryBookException();
 
-        int CurBookCount = BookStocks.get(BookNumber);
+            int CurBookCount = BookStocks.get(book);
 
-        if(CurBookCount<Count)
-            throw new Exception();
+            if(CurBookCount<Count)
+                throw new FewerBookException();
 
-        BookStocks.put(BookNumber, CurBookCount-Count);
+            BookStocks.put(book, CurBookCount-Count);
+        } catch(NoLibraryBookException | FewerBookException e){
+            System.out.println(e);
+        }
     }
 
 }
