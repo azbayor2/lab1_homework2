@@ -2,37 +2,6 @@ package Library.Book;
 import java.util.*;
 
 
-enum BookCategory{
-    Fiction, Drama, Mystery, Thriller, Horror, Romance, Fantasy, Sci_Fi, Biography,
-    Self_Help, Poetry, Adventure, Erotica, Spiritual, Travel
-}
-
-
-class LibraryBook extends Book{
-    Integer BookNumber;
-    BookCategory Category;
-
-    public LibraryBook(Book book, Integer BookNumber, BookCategory Category) {
-        super(book);
-        this.BookNumber = BookNumber;
-        this.Category = Category;
-    }
-
-    @Override
-    public boolean equals(Object oBook){
-        Book book = (Book)oBook;
-        if(this.Author.equals(book.Author) && this.Publisher.equals(book.Publisher)&&
-        this.Title.equals(book.Title)) return true;
-
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(Title, Author, Publisher);
-    }
-}
-
 interface BookManagementInterface{
     public void AddBook(Book book, BookCategory cat, int count) throws Exception;
     public void DeleteBook(Integer BookNumber, Integer Count) throws Exception;
