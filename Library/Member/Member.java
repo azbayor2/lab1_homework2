@@ -1,25 +1,63 @@
 package Library.Member;
-
+import Library.Exception.DifferentUserInfo;
 import Library.User.*;
 
 public class Member{
     private String username;
     private User user;
 
-    Member(User user, String username){
+    public Member(User user, String username){
         this.user = user;
         this.username = username;
     }
 
-    void editUser(User o){
-        user = o;
-        return;
+    public void editUser(User o){
+        try{
+            if(user.CheckChangable(o))
+                user = o;
+            else
+                throw new DifferentUserInfo();
+            
+            return;
+        } catch(DifferentUserInfo e){
+            System.out.println(e);
+        }
+    }
+
+    public Member(Member m){
+        this.user= new User(m.user);
+        this.username = m.username;
+    }
+
+    public User getUser(){
+        return new User(user);
     }
 
     @Override
     public boolean equals(Object o){
-        if(this.user.equals(o)) return true;
+        if(o==null) return false;
+
+        User u = null;
+
+        if(o instanceof Member){
+            Member oo = (Member)o;
+            u = oo.user;
+        } else if(o instanceof User)
+            u = (User)o;
+        else{
+            System.out.println("not compatible type: Member");
+        }
+        
+        if(u==null){
+            System.out.println("member: u is null");
+        }
+        if(this.user.equals(u)) return true;
         return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return user.hashCode();
     }
 }
 

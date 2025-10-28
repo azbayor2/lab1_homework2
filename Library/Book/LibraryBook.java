@@ -1,29 +1,42 @@
 package Library.Book;
 import java.util.*;
 
-enum BookCategory{
-    Fiction, Drama, Mystery, Thriller, Horror, Romance, Fantasy, Sci_Fi, Biography,
-    Self_Help, Poetry, Adventure, Erotica, Spiritual, Travel
-}
-
+import Library.Library.Library;
 
 public class LibraryBook{
-    Integer BookNumber;
-    BookCategory Category;
-    Book book;
+    //Integer BookNumber;
+    private BookCategory Category;
+    private Book book;
 
-    public LibraryBook(Book book, Integer BookNumber, BookCategory Category) {
+    public LibraryBook(Book book, BookCategory Category) {
         this.book = book;
-        this.BookNumber = BookNumber;
+        //this.BookNumber = BookNumber;
         this.Category = Category;
+    }
+
+    public LibraryBook(LibraryBook lb){
+        this.Category = lb.Category;
+        this.book = new Book(lb.book);
+    }
+
+    public Book getBook(){
+        return new Book(book);
     }
 
     @Override
     public boolean equals(Object oBook){
-        Book book = (Book)oBook;
-        if(book.Author.equals(book.Author) && book.Publisher.equals(book.Publisher)&&
-        book.Title.equals(book.Title)) return true;
+        Book b = null;
+        if(oBook instanceof LibraryBook){
+            LibraryBook lb = (LibraryBook)oBook;
+            b = lb.book;
+        } else if(oBook instanceof Book)
+            b = (Book)oBook;
 
+        return this.book.equals(b);
+    }
+
+    public boolean equals(LibraryBook lb){
+        if(this.book.equals(lb.book)) return true;
         return false;
     }
 

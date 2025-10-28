@@ -37,6 +37,10 @@ public class UserBuilder{
         this.PrivateID = privateid;
         return this;
     }
+
+    public User build(){
+        return new User(Name, Birthdate, Gender, PhoneNumber, Address, PrivateID);
+    }
 }
 
 

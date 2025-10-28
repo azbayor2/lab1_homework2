@@ -4,14 +4,9 @@ import Library.Exception.*;
 import Library.User.*;
 import java.util.*;
 
-interface LibraryMemberManagement{
-    void addMember(User o, String user);
-    void editMember(Member o, User mod);
-    void deleteMember(Member o);
-}
 
 public class MemberManagement implements LibraryMemberManagement{
-    List<Member> Members = new ArrayList<>();
+    List<Member> Members = new ArrayList<Member>();
     //HashMap<Member, Integer> Members = new HashMap<Member, Integer>();
 
     public void addMember(User o, String user){
@@ -30,14 +25,18 @@ public class MemberManagement implements LibraryMemberManagement{
         }
     }
 
-    public void deleteMember(Member o){
+    public void deleteMember(Member o, int loanCount){
         try{
             if(!Members.contains(o))
                 throw new NoMemberException();
 
+            if(loanCount>0) throw new UserCurrentlyHaveLoanException();
+
             Members.remove(o);
         } catch(NoMemberException e){
             System.out.println(e);
+        } catch(UserCurrentlyHaveLoanException e){
+            System.out.println("Cannot delete user: "+ e);
         }
     }
 
@@ -50,6 +49,21 @@ public class MemberManagement implements LibraryMemberManagement{
             o.editUser(mod);
         } catch(NoMemberException e){
             System.out.println(e);
+        }
+    }
+
+    public Member getMember(User o){
+        try{
+            int idx = Members.indexOf(o);
+            if(idx==-1){
+                throw new NoMemberException();
+            }
+            Member ret = new Member(Members.get(idx));
+
+            return ret;
+        } catch(NoMemberException e){
+            System.out.println(e);
+            return null;
         }
     }
 
