@@ -184,7 +184,7 @@
     }
  ```
 
- 생성자로 **BookManagement, LoanManagement, MemberManagement** 를 넘기면 각각 BMI, LLM, LMM의 변수에 저장합니다. 도서관은 다음의 기능을
+ 생성자로 **BookManagement, LoanManagement, MemberManagement** 를 넘기면 각각 BMI, LLM, LMM의 변수에 저장합니다. 도서관은 다음
 
     - 사용자 추가
     - 사용자 정보 수정
@@ -195,7 +195,7 @@
     - 책 반납
     - 대여 정책 변경
 
- 의 기능을 제공하며, 각각 **BookManagement, LoanManagement, MemberManagement** 의 메서드 호출을 통해 기능을 수행합니다.
+기능을 제공하며, 각각 **BookManagement, LoanManagement, MemberManagement** 의 메서드 호출을 통해 기능을 수행합니다.
  
 
 
