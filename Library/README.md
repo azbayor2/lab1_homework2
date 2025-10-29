@@ -185,11 +185,12 @@
 
  본 프로그램에서는 **LibraryMemberManagement** 인터페이스를 **MemberManagement**에서 구현하였습니다.
 
+ </br>
+
  ```JAVA
  List<Member> Members = new ArrayList<Member>();
  ```
-
- MemberManagement의 Members 변수는 도서관의 사용자를 저장하는 클래스 변수입니다.
+ MemberManagement의 Members 변수는 도서관의 사용자를 저장하는 클래스 변수입니다. 나머지 메서드는 구현체에 있는 것을 구현하였습니다.
 
  </br>
 
