@@ -52,7 +52,19 @@
 
 ## 2. 책 클래스 및 도서관 책 클래스
 
- 책은 도서관의 핵심 객체 중 하나입니다. **Book** 클래스는 '시중'의 책을 객체화 한 것이고, **LibraryBook** 클래스는 *'도서관' 책*을 객체화 한 것이고 (합성), **Book** 객체와 더불어 **BookCategory** 클래스 (enum) 을 가지고 있습니다.
+ ```JAVA
+ /Library
+      /Book
+         /Book.java
+         /LibraryBook.java
+         /BookCategory.java
+```
+
+</br>
+
+ 
+ 
+ 책은 도서관의 핵심 객체 중 하나입니다. **Book** 클래스는 '시중'의 책을 객체화 한 것이고, **LibraryBook** 클래스는 **'도서관' 책**을 객체화 한 것이고 (합성), **Book** 객체와 더불어 **BookCategory** 클래스 (enum) 을 가지고 있습니다.
 
  이렇게 구별한 이유는 도서관 책은 시중의 책으로부터 파생된 것이기 때문입니다. 본 프로그램에서 책의 재고를 추가할 때는 Book 클래스를 사용하며, 책 폐기, 책 대여 등과 같은 작업을 할 때에는 LibraryBook 을 통해서 합니다.
 
@@ -61,7 +73,20 @@
  </br>
 
 
-## 3. 사용자 클래스
+## 3. User 클래스 및 Member 클래스
+
+
+```JAVA
+ /Library
+   /User
+      /User.java
+      /UserBuilder.java
+   /Member
+      /Member.java
+
+```
+
+</br>
 
  사용자 또한 도서관의 핵심 객체 중 하나입니다. 오로지 가입을 한 사용자만이 책을 대여할 권한을 가지기 때문입니다. User 클래스는 단순히 **'사람'**을 객체화 한 것입니다. 즉 User는 도서관의 회원일수도 아닐수도 있습니다.
 
@@ -73,6 +98,15 @@
 
 
 ## 4. 책 관리 클래스
+
+```JAVA
+ /Library
+   /Book
+      /BookManagement.java
+      /BookManagementInterface.java
+```
+
+</br>
 
  책 관리 클래스는 도서관의 책 재고를 관리하는 클래스입니다. 책 관리 모듈을 다른 개발자가 다르게 정의할 수 있기 때문에 필수 메서드는 **BookManagementInterface** 인터페이스에 선언을 하였고, 개발자는 이를 자체 정의한 클래스에서 구현하도록 했습니다. 이는 다형성을 충족하기 위함입니다.
 
@@ -103,6 +137,18 @@
 
 
 ## 5. 대출 관리 클래스
+
+
+```JAVA
+ /Library
+   /Loan
+      /LibraryLoanManagement.java
+      /LibraryLoanPolicy.java
+      /LoanManagement.java
+      /LoanPolicy.java
+```
+
+</br>
 
  대출 관리 클래스는 도서관의 대출을 관리하는 클래스입니다. 대출 관리 클래스도 개발자가 다르게 구현할 수 있기 때문에 필수 메서드는 **LibraryLoanManagement** 인터페이스에 선언하였고, 개발자는 이를 자체적으로 정의한 클래스에서 구현하도록 했습니다 **(다형성)**.
 
@@ -166,6 +212,16 @@
 
 
 ## 6. 사용자 관리 클래스
+
+
+```JAVA
+ /Library
+   /Member
+      ./LibraryMemberManagement.java
+      ./MemberManagement.java
+```
+
+</br>
  
  사용자 관리 클래스는 도서관의 사용자를 관리하는 클래스입니다. 이 역시 다형성을 충족시키기 위해 **LibraryMemberManagement** 인터페이스를 정의하였습니다. 이는 다음의 메서드를 제공합니다:
 
@@ -196,6 +252,15 @@
 
 
  ## 7. 사용자 정의 예외 클래스
+
+
+ ```JAVA
+ /Library
+   /Exception
+      /...
+```
+
+</br>
 
  Library의 각 모듈의 메서드를 실행하는 과정에서 **예외**가 발생할 수 있습니다. 예를 들어 없는 사용자로 책을 대여하는 행위라거나, 이미 존재하는 사용자의 중복 가입의 등 사용자의 실수로 인한 오류가 발생할 수 있습니다. 이를 위해 [Exception](./Exception/) 폴더 안에 발생할 수 있는 예외를 throwable 오브젝트인 **Exception**을 상속하여 정의하였습니다. 본 프로그램에서는 다음의 예외가 정의되어 있습니다:
 
@@ -230,6 +295,16 @@
  </br>
 
 ## 8. 도서관 클래스
+
+
+```JAVA
+ /Library
+   /Library
+      /Library.java
+```
+
+</br>
+
 
  도서관 클래스는 도서관을 객체화 한 것으로 핵심 기능인 사용자 관리, 책 관리, 대출 관리 클래스를 이용하여 구현한 클래스입니다.
 
