@@ -200,16 +200,27 @@
 
  ```JAVA
  class DifferentUserInfoException //수정이 안되는 사용자의 정보를 수정할 때
+
  class FewerBookException //폐기하는 책이 현재 재고량보다 적을 때
+
  class LoanCountExcessException //책이 전부 대여되었을 때
+
  class LoanedBookException //이미 사용자가 같은 책을 대여했을 때
+
  class LoanPolicyViolationException //대출 정책을 위반했을 때
+
  class MemberAlreadyExistsException //이미 존재하는 회원일 때
+
  class NoLibraryBookException //도서관에 없는 책일 때
+
  class NoMemberException //사용자가 존재하지 않을 때
+
  class NotLoanedBookException //반납하는 책이 사용자에 의해 대여한 책이 아닐 때
+
  class UserCreationShortArgsException //사람을 생성할 때 필수 인자가 없을 때
- class UserCurrentlyHaveLoanException //사용자를 삭제할 때 대여한 책이 있을 떄
+
+ class UserCurrentlyHaveLoanException //사용자를 삭제할 때 대여한 책이 있을 때
+
  ```
 </br>
 
