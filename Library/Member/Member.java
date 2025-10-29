@@ -1,5 +1,5 @@
 package Library.Member;
-import Library.Exception.DifferentUserInfo;
+import Library.Exception.DifferentUserInfoException;
 import Library.User.*;
 
 public class Member{
@@ -16,10 +16,10 @@ public class Member{
             if(user.CheckChangable(o))
                 user = o;
             else
-                throw new DifferentUserInfo();
+                throw new DifferentUserInfoException();
             
             return;
-        } catch(DifferentUserInfo e){
+        } catch(DifferentUserInfoException e){
             System.out.println(e);
         }
     }
