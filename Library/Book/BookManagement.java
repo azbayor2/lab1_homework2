@@ -9,9 +9,9 @@ public class BookManagement implements BookManagementInterface{  //예외처리 
     private HashMap<LibraryBook, Integer> BookStocks = new HashMap<>();
     //private HashMap<LibraryBook, Integer> BookNum = new HashMap<>();
 
-    public void AddBook(LibraryBook book, int count){
-        if(!BookStocks.containsKey(book)){
-            BookStocks.put(book, count);
+    public void AddBook(LibraryBook book, int count){   //책 추가
+        if(!BookStocks.containsKey(book)){   
+            BookStocks.put(new LibraryBook(book), count);  //방어적 복사
             return;
         }
 
@@ -41,12 +41,13 @@ public class BookManagement implements BookManagementInterface{  //예외처리 
             LibraryBook lb = null;
             for(LibraryBook cur: BookStocks.keySet()){
                 if(!cur.equals(find)) continue;
-                lb = new LibraryBook(cur);
+                lb = new LibraryBook(cur);  //방어적 복사
                 break;
             }
             if(lb==null) throw new NoLibraryBookException();
 
             return lb;
+            
         } catch(NoLibraryBookException e){
             System.out.println(e);
             return null;

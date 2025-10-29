@@ -7,14 +7,14 @@ public class Member{
     private User user;
 
     public Member(User user, String username){
-        this.user = user;
+        this.user = new User(user); //방어적 복사
         this.username = username;
     }
 
     public void editUser(User o){
         try{
             if(user.CheckChangable(o))
-                user = o;
+                user = new User(o);
             else
                 throw new DifferentUserInfoException();
             
@@ -25,12 +25,12 @@ public class Member{
     }
 
     public Member(Member m){
-        this.user= new User(m.user);
+        this.user= new User(m.user);  //방어적 복사
         this.username = m.username;
     }
 
     public User getUser(){
-        return new User(user);
+        return new User(user);  //방어적 복사
     }
 
     @Override

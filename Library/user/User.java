@@ -47,7 +47,7 @@ public class User {
     }
 
     public boolean CheckChangable(User u){
-        if(this.Birthdate!=u.Birthdate) return false;
+        if(this.Birthdate.equals(u.Birthdate)) return false;
         return true;
     }
 

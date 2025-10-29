@@ -7,6 +7,10 @@ public class LoanPolicy implements LibraryLoanPolicy{
         this.MAX_LOAN_COUNT = MAX_LOAN_COUNT;
     }
 
+    public LoanPolicy(LoanPolicy lp){
+        this.MAX_LOAN_COUNT = lp.MAX_LOAN_COUNT;
+    }
+
     @Override
     public void setPolicy(int MAX_LOAN_COUNT){
         this.MAX_LOAN_COUNT = MAX_LOAN_COUNT;

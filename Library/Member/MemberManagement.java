@@ -11,7 +11,7 @@ public class MemberManagement implements LibraryMemberManagement{
 
     public void addMember(User o, String user){
         try{
-            Member newMember = new Member(o, user);
+            Member newMember = new Member(o, user);  //Member에서 방어적 복사 구현
             if(Members.contains(newMember)){
                 throw new MemberAlreadyExistsException();
             }
@@ -46,7 +46,7 @@ public class MemberManagement implements LibraryMemberManagement{
                 throw new NoMemberException();
             //int val=-1;
             
-            o.editUser(mod);
+            o.editUser(mod);  //editUser 메서드에서 방어적 복사 구현
         } catch(NoMemberException e){
             System.out.println(e);
         }
@@ -58,7 +58,7 @@ public class MemberManagement implements LibraryMemberManagement{
             if(idx==-1){
                 throw new NoMemberException();
             }
-            Member ret = new Member(Members.get(idx));
+            Member ret = new Member(Members.get(idx));  //방어적 복사
 
             return ret;
         } catch(NoMemberException e){

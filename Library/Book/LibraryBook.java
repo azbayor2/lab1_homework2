@@ -1,7 +1,6 @@
 package Library.Book;
 import java.util.*;
 
-import Library.Library.Library;
 
 public class LibraryBook{
     //Integer BookNumber;
@@ -9,18 +8,18 @@ public class LibraryBook{
     private Book book;
 
     public LibraryBook(Book book, BookCategory Category) {
-        this.book = book;
+        this.book = new Book(book);
         //this.BookNumber = BookNumber;
         this.Category = Category;
     }
 
     public LibraryBook(LibraryBook lb){
         this.Category = lb.Category;
-        this.book = new Book(lb.book);
+        this.book = new Book(lb.book);  //방어적 복사
     }
 
     public Book getBook(){
-        return new Book(book);
+        return new Book(book);  //방어적 복사
     }
 
     @Override
@@ -33,11 +32,6 @@ public class LibraryBook{
             b = (Book)oBook;
 
         return this.book.equals(b);
-    }
-
-    public boolean equals(LibraryBook lb){
-        if(this.book.equals(lb.book)) return true;
-        return false;
     }
 
     @Override
