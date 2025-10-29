@@ -199,27 +199,27 @@
  Library의 각 모듈의 메서드를 실행하는 과정에서 **예외**가 발생할 수 있습니다. 예를 들어 없는 사용자로 책을 대여하는 행위라거나, 이미 존재하는 사용자의 중복 가입의 등 사용자의 실수로 인한 오류가 발생할 수 있습니다. 이를 위해 [Exception](./Exception/) 폴더 안에 발생할 수 있는 예외를 throwable 오브젝트인 **Exception**을 상속하여 정의하였습니다. 본 프로그램에서는 다음의 예외가 정의되어 있습니다:
 
  ```JAVA
- class DifferentUserInfoException //수정이 안되는 사용자의 정보를 수정할 때
+ class DifferentUserInfoException extends Exception{}; //수정이 안되는 사용자의 정보를 수정할 때
 
- class FewerBookException //폐기하는 책이 현재 재고량보다 적을 때
+ class FewerBookException extends Exception{}; //폐기하는 책이 현재 재고량보다 적을 때
 
- class LoanCountExcessException //책이 전부 대여되었을 때
+ class LoanCountExcessException extends Exception{}; //책이 전부 대여되었을 때
 
- class LoanedBookException //이미 사용자가 같은 책을 대여했을 때
+ class LoanedBookException extends Exception{}; //이미 사용자가 같은 책을 대여했을 때
 
- class LoanPolicyViolationException //대출 정책을 위반했을 때
+ class LoanPolicyViolationException extends Exception{}; //대출 정책을 위반했을 때
 
- class MemberAlreadyExistsException //이미 존재하는 회원일 때
+ class MemberAlreadyExistsException extends Exception{}; //이미 존재하는 회원일 때
 
- class NoLibraryBookException //도서관에 없는 책일 때
+ class NoLibraryBookException extends Exception{}; //도서관에 없는 책일 때
 
- class NoMemberException //사용자가 존재하지 않을 때
+ class NoMemberException extends Exception{}; //사용자가 존재하지 않을 때
 
- class NotLoanedBookException //반납하는 책이 사용자에 의해 대여한 책이 아닐 때
+ class NotLoanedBookException extends Exception{}; //반납하는 책이 사용자에 의해 대여한 책이 아닐 때
 
- class UserCreationShortArgsException //사람을 생성할 때 필수 인자가 없을 때
+ class UserCreationShortArgsException extends Exception{}; //사람을 생성할 때 필수 인자가 없을 때
 
- class UserCurrentlyHaveLoanException //사용자를 삭제할 때 대여한 책이 있을 때
+ class UserCurrentlyHaveLoanException extends Exception{}; //사용자를 삭제할 때 대여한 책이 있을 때
 
  ```
 </br>
