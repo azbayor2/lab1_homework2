@@ -8,5 +8,4 @@ public interface LibraryLoanManagement{
     void changeMaxLoanPolicy(int MAX_LOAN_BOOK);
     int getLoanStatus(LibraryBook lb);
     int getUserLoanCount(Member m);
-
 }

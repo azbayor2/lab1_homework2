@@ -25,6 +25,12 @@ public class MemberManagement implements LibraryMemberManagement{
         }
     }
 
+    public MemberManagement(MemberManagement mm){
+        this.Members = new ArrayList<>(mm.Members);
+    }
+
+    public MemberManagement(){}
+
     public void deleteMember(Member o, int loanCount){
         try{
             if(!Members.contains(o))

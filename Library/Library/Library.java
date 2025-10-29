@@ -13,9 +13,9 @@ public class Library {
 
 
     public Library(BookManagementInterface BMI, LibraryLoanManagement LLM, LibraryMemberManagement LMM){
-        this.BMI = BMI;
-        this.LLM = LLM;
-        this.LMM = LMM;
+        this.BMI = new BookManagement((BookManagement)BMI);
+        this.LLM = new LoanManagement((LoanManagement)LLM);
+        this.LMM = new MemberManagement((MemberManagement)LMM);
     }
 
     public void changeBookManagementInterface(BookManagementInterface BMI){

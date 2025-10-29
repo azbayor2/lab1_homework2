@@ -19,6 +19,12 @@ public class BookManagement implements BookManagementInterface{  //예외처리 
         BookStocks.put(book, prevCount+count);
     }
 
+    public BookManagement(BookManagement bm){
+        this.BookStocks = new HashMap<>(bm.BookStocks);
+    }
+
+    public BookManagement(){}
+
     public void DeleteBook(LibraryBook book, int Count, int loanedBookCount){  //예외처리 하기 (책 개수 0이하 일때, 버리는 책이 더 많을 때)
         try{
             if(!BookStocks.containsKey(book))

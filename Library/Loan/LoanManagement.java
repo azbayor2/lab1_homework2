@@ -8,10 +8,19 @@ import java.util.*;
 public class LoanManagement implements LibraryLoanManagement{
     private HashMap<Member, ArrayList<LibraryBook>> loans = new HashMap<>();
     private HashMap<LibraryBook, Integer> loan_status = new HashMap<>();
-    private LibraryLoanPolicy lp;
+    private LibraryLoanPolicy lp = null;
 
     public LoanManagement(LibraryLoanPolicy lp){
-        this.lp = lp;
+        this.lp = new LoanPolicy((LoanPolicy)lp);
+    }
+
+    public LoanManagement(){}
+    
+
+    public LoanManagement(LoanManagement lm){
+        this.loans = new HashMap<>(lm.loans);
+        this.loan_status = new HashMap<>(lm.loan_status);
+        this.lp = new LoanPolicy((LoanPolicy)lm.lp);
     }
 
     public void LoanBook(Member m, LibraryBook b, int totalBookCount){
